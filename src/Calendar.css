@@ -1,0 +1,41 @@
+/* contenedor del calendario */
+.react-calendar {
+    margin: auto;
+    width: 50%;
+}
+
+/* botones */
+.react-calendar button {
+    outline: none;
+    background-color: white;
+    border: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: .2s;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.react-calendar button:hover {
+    background: lightgray;
+}
+
+/* nombres dias de la semana */
+.react-calendar .react-calendar__month-view .react-calendar__month-view__weekdays {
+    padding: 20px;
+}
+
+/* dias de la semana */
+.react-calendar .react-calendar__month-view__days .react-calendar__tile {
+    height: 75px;
+    width: 75px;
+}
+
+/* findes */
+.react-calendar .react-calendar__month-view__days__day--weekend {
+    color: red;
+}
+
+/* dias de fuera de mes actual */
+.react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+    opacity: .2;
+}

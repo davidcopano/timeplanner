@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+@import "./Calendar.css";
 
 body {
   font-family: 'Fira Sans', sans-serif;
@@ -6,8 +6,4 @@ body {
 
 .main-wrapper .title {
   text-align: center;
-}
-
-.react-calendar {
-  margin: auto;
 }
