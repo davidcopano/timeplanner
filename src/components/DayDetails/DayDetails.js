@@ -23,12 +23,11 @@ export class DayDetails extends Component {
     }
 
     render() {
-        if(this.state.day) {
-            console.log('hay dia');
-            console.log(this.state.day);
-
+        // si tenemos dia mostramos los detalles
+        // si no animamos el elemento para que se cierre
+        if (this.state.day) {
             return (
-                <div id="day-details" className="day-details" style={{ width: '250px' }}>
+                <div id="day-details" className={['day-details', this.state.day !== undefined ? 'isOpened' : 'isClosed'].join(' ')} >
                     <button className="closebtn" onClick={this.closeDayDetails}>&times;</button>
                     <button>About</button>
                     <button>Services</button>
@@ -38,7 +37,15 @@ export class DayDetails extends Component {
             )
         }
         else {
-            return null;
+            return (
+                <div id="day-details" className={['day-details', 'isClosed'].join(' ')} >
+                    <button className="closebtn" onClick={this.closeDayDetails}>&times;</button>
+                    <button>About</button>
+                    <button>Services</button>
+                    <button>Clients</button>
+                    <button>Contact</button>
+                </div>
+            )
         }
     }
 }
