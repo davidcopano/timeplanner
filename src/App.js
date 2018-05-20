@@ -4,9 +4,18 @@ import { DayDetails } from "./components/DayDetails/DayDetails";
 import "./App.css";
 
 class App extends Component {
-  
+
+  constructor() {
+    super();
+    this.state = {
+      dayOpened: undefined
+    }
+  }
+
   openDayDetails = (day) => {
-    document.getElementById("day-details").style.width = "350px";
+    this.setState({
+      dayOpened: day
+    })
   }
 
   render() {
@@ -17,7 +26,7 @@ class App extends Component {
           <p>Organiza tus tareas</p>
         </div>
         <Calendar onChange={this.openDayDetails}/>
-        <DayDetails />
+        {this.state.dayOpened ? <DayDetails day={this.state.dayOpened} /> : null}
       </div>
     )
   }
