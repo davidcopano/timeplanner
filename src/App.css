@@ -3,3 +3,11 @@
 body {
   font-family: 'Fira Sans', sans-serif;
 }
+
+.main-wrapper .title {
+  text-align: center;
+}
+
+.react-calendar {
+  margin: auto;
+}
