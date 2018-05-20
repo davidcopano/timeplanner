@@ -9,6 +9,7 @@
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
+    color: white;
 }
 
 #day-details.isOpened {
@@ -30,6 +31,7 @@
     color: #818181;
     display: block;
     transition: 0.3s;
+    outline: none;
 }
 
 #day-details .closebtn {
@@ -37,7 +39,17 @@
     top: 0;
     right: 25px;
     font-size: 36px;
-    margin-left: 50px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: .2s;
+    padding: 0;
+    left: 25px;
+    top: 10px;
+}
+
+#day-details .closebtn:hover {
+    color: red;
 }
 
 /* animaciones */
@@ -50,7 +62,6 @@
     }
 }
 
-/* animaciones */
 @keyframes close {
     0% {
         width: 350px;

@@ -22,6 +22,15 @@ export class DayDetails extends Component {
         })
     }
 
+    formatDate = (date) => {
+        return date.toLocaleString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        })
+    }
+
     render() {
         // si tenemos dia mostramos los detalles
         // si no animamos el elemento para que se cierre
@@ -29,10 +38,7 @@ export class DayDetails extends Component {
             return (
                 <div id="day-details" className={['day-details', this.state.day !== undefined ? 'isOpened' : 'isClosed'].join(' ')} >
                     <button className="closebtn" onClick={this.closeDayDetails}>&times;</button>
-                    <button>About</button>
-                    <button>Services</button>
-                    <button>Clients</button>
-                    <button>Contact</button>
+                    <p className="title">{this.formatDate(this.state.day)}</p>
                 </div>
             )
         }
@@ -40,10 +46,6 @@ export class DayDetails extends Component {
             return (
                 <div id="day-details" className={['day-details', 'isClosed'].join(' ')} >
                     <button className="closebtn" onClick={this.closeDayDetails}>&times;</button>
-                    <button>About</button>
-                    <button>Services</button>
-                    <button>Clients</button>
-                    <button>Contact</button>
                 </div>
             )
         }
