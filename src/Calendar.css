@@ -2,6 +2,16 @@
 .react-calendar {
     margin: auto;
     width: 50%;
+    border: 1px solid;
+}
+
+.react-calendar .react-calendar__navigation {
+    border-bottom: 1px solid;
+}
+
+.react-calendar .react-calendar__month-view__weekdays {
+    background-color: white;
+    border-bottom: 1px solid;
 }
 
 /* botones */
@@ -37,7 +47,7 @@
 
 /* dias de fuera de mes actual */
 .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
-    opacity: .2;
+    color: rgb(209, 209, 209);
 }
 
 /* dia actual */

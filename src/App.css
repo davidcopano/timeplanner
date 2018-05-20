@@ -1,9 +1,20 @@
 @import "./Calendar.css";
 
+:root {
+  --main-color: #EEECDA;
+  --secondary-color: #D3A6AD;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Fira Sans', sans-serif;
+  background: linear-gradient(var(--main-color), var(--secondary-color));
 }
 
 .main-wrapper .title {
   text-align: center;
+  color: #a78489;
 }
