@@ -6,16 +6,18 @@ export class DayDetails extends Component {
 
     constructor(props) {
         super(props);
-        this.dayDetails = new Details(this.props.day)
+        this.details = new Details(this.props.day)
         this.state = {
             day: this.props.day,
-            details: this.dayDetails.getDayDetails(),
+            details: this.details.getDayDetails(),
             newDetail: {
                 project: '',
                 time: '',
                 description: ''
             }
         }
+        console.log('mis details = ');
+        console.log(this.state.details);
     }
 
     closeDayDetails = () => {
@@ -26,8 +28,11 @@ export class DayDetails extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            day: nextProps.day
+            day: nextProps.day,
+            details: this.details.getDayDetails(nextProps.day)
         })
+        console.log('componentWillReceiveProps()');
+        console.log(this.state.details);
     }
 
     formatDate = (date) => {
@@ -64,18 +69,18 @@ export class DayDetails extends Component {
     }
 
     onSubmit = (event) => {
-        console.log('onSubmit()');
         event.preventDefault();
-
-        console.log(this.state);
-
+        let oldState = this.state;
+        oldState.details.push(this.state.newDetail);
+        this.details.addDayDetails(this.state.newDetail);
         this.setState({
             newDetail: {
                 project: '',
                 time: '',
                 description: ''
-            }
-        })
+            },
+            details: oldState.details
+        });
     }
 
     render() {
@@ -103,6 +108,9 @@ export class DayDetails extends Component {
                             </div>
                             <button type="submit">Añadir</button>
                         </form>
+                    </div>
+                    <div className="details-list" style={{ textAlign: 'center', marginTop: '10px' }}>
+                        {JSON.stringify(this.state.details)}
                     </div>
                 </div>
             )
