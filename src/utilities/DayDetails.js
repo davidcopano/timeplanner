@@ -3,20 +3,21 @@ export class Details {
         this.date = date;
     }
 
+    setDate(date) {
+        this.date = date;
+    }
+
     getDayDetails() {
         if (localStorage.days) {
             let days = JSON.parse(localStorage.days);
+            let returnedDays = [];
             for (let i = 0; i < days.length; i++) {
-                if (days[i].date === this.date) {
-                    return days[i].details;
+                if (this.formatDate() === this.formatExternalDate(days[i].date)) {
+                    returnedDays.push(days[i]);
                 }
             }
 
-            return [];
-        }
-        else {
-            localStorage.days = JSON.stringify([]);
-            return [];
+            return returnedDays;
         }
     }
 
@@ -25,13 +26,18 @@ export class Details {
         // convertimos a cadena
         if (localStorage.days) {
             let days = JSON.parse(localStorage.days);
-            details.date = this.date;
+            details.date = this.formatDate();
             days.push(details);
             localStorage.days = JSON.stringify(days);
         }
-        else {
-            details = JSON.stringify(details);
-            localStorage.days = details;
-        }
+    }
+
+    formatDate() {
+        return this.date.getFullYear() + '-' + this.date.getMonth() + '-' + this.date.getDate();
+    }
+
+    formatExternalDate(date) {
+        date = new Date();
+        return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
     }
 }

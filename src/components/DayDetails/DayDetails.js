@@ -16,8 +16,6 @@ export class DayDetails extends Component {
                 description: ''
             }
         }
-        console.log('mis details = ');
-        console.log(this.state.details);
     }
 
     closeDayDetails = () => {
@@ -27,12 +25,15 @@ export class DayDetails extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        this.details.setDate(nextProps.day);
         this.setState({
             day: nextProps.day,
             details: this.details.getDayDetails(nextProps.day)
         })
-        console.log('componentWillReceiveProps()');
-        console.log(this.state.details);
+        setTimeout(() => {
+            console.log('componentWillReceiveProps()');
+            console.log(this.state.details);
+        }, 1000);
     }
 
     formatDate = (date) => {

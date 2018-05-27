@@ -10,6 +10,10 @@ class App extends Component {
     this.state = {
       dayOpened: undefined
     }
+    // si no hay un localStorage de days, lo creamos
+    if(!localStorage.days) {
+      localStorage.days = JSON.stringify([]);
+    }
   }
 
   openDayDetails = (day) => {
