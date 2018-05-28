@@ -22,7 +22,12 @@ export class DayDetails extends Component {
 
     closeDayDetails = () => {
         this.setState({
-            day: undefined
+            day: undefined,
+            newDetail: {
+                project: '',
+                time: '',
+                description: ''
+            }
         })
     }
 
@@ -109,7 +114,10 @@ export class DayDetails extends Component {
                                 <label htmlFor="description">Descripción</label>
                                 <textarea placeholder="Arreglado error..." value={this.state.newDetail.description} onChange={this.handleDescription}></textarea>
                             </div>
-                            <button type="submit" disabled={!this.state.newDetail.project || !this.state.newDetail.time || !this.state.newDetail.description}>Añadir</button>
+                            <button type="submit" disabled={!this.state.newDetail.project || !this.state.newDetail.time || !this.state.newDetail.description}>
+                                Añadir
+                                {this.state.newDetail.project && this.state.newDetail.time && this.state.newDetail.description ? <i className="fas fa-check" style={{paddingLeft: '8px'}}></i> : null}
+                            </button>
                         </form>
                     </div>
                     <div className="details-list" style={{ textAlign: 'center', marginTop: '10px' }}>
@@ -121,11 +129,11 @@ export class DayDetails extends Component {
                                 <p className="description">"{detail.description}"</p>
                             </div>
                         )) : (
-                            <div className="no-details">
-                                <img src={noDetailsImg} alt="Sin detalles en el día actual" className="img"/>
-                                <p>No hay nada por aquí...</p>
-                            </div>
-                        )}
+                                <div className="no-details">
+                                    <img src={noDetailsImg} alt="Sin detalles en el día actual" className="img" />
+                                    <p>No hay nada por aquí...</p>
+                                </div>
+                            )}
                     </div>
                 </div>
             )
