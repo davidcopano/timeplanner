@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./DayDetails.css";
 import { Details } from "../../utilities/DayDetails";
+import noDetailsImg from '../../assets/tumbleweed.png';
 
 export class DayDetails extends Component {
 
@@ -14,7 +15,8 @@ export class DayDetails extends Component {
                 project: '',
                 time: '',
                 description: ''
-            }
+            },
+            totalHours: 0
         }
     }
 
@@ -89,7 +91,7 @@ export class DayDetails extends Component {
         // si no animamos el elemento para que se cierre
         if (this.state.day) {
             return (
-                <div id="day-details" className={['day-details', this.state.day !== undefined ? 'isOpened' : 'isClosed'].join(' ')} >
+                <div id="day-details" className={['day-details', this.state.day !== undefined ? 'isOpened' : 'isClosed'].join(' ')}>
                     <button className="closebtn" onClick={this.closeDayDetails}>&times;</button>
                     <p className="title">{this.formatDate(this.state.day)}</p>
                     <div className="add-details-container">
@@ -107,11 +109,23 @@ export class DayDetails extends Component {
                                 <label htmlFor="description">Descripción</label>
                                 <textarea placeholder="Arreglado error..." value={this.state.newDetail.description} onChange={this.handleDescription}></textarea>
                             </div>
-                            <button type="submit">Añadir</button>
+                            <button type="submit" disabled={!this.state.newDetail.project || !this.state.newDetail.time || !this.state.newDetail.description}>Añadir</button>
                         </form>
                     </div>
                     <div className="details-list" style={{ textAlign: 'center', marginTop: '10px' }}>
-                        {JSON.stringify(this.state.details)}
+                        <hr />
+                        <h1>Mi planificación</h1>
+                        {this.state.details.length > 0 ? this.state.details.map(detail => (
+                            <div key={detail.project + '-' + detail.date} className="detail">
+                                <h2 className="title">{detail.project} <span className="time">{detail.time}</span></h2>
+                                <p className="description">"{detail.description}"</p>
+                            </div>
+                        )) : (
+                            <div className="no-details">
+                                <img src={noDetailsImg} alt="Sin detalles en el día actual" className="img"/>
+                                <p>No hay nada por aquí...</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             )
