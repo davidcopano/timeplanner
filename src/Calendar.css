@@ -61,3 +61,10 @@
     opacity: .7;
     background: lightblue;
 }
+
+/* media queries */
+@media screen and (max-width: 768px) {
+    .react-calendar {
+        width: 90%;
+    }
+}

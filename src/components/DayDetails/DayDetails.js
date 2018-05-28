@@ -125,7 +125,7 @@ export class DayDetails extends Component {
                             </div>
                             <button type="submit" disabled={!this.state.newDetail.project || !this.state.newDetail.time || !this.state.newDetail.description}>
                                 Añadir
-                                {this.state.newDetail.project && this.state.newDetail.time && this.state.newDetail.description ? <i className="fas fa-check" style={{paddingLeft: '8px'}}></i> : null}
+                                {this.state.newDetail.project && this.state.newDetail.time && this.state.newDetail.description ? <i className="fas fa-check" style={{paddingLeft: '8px'}}></i> : <i className="fas fa-times" style={{paddingLeft: '8px'}}></i>}
                             </button>
                         </form>
                     </div>
