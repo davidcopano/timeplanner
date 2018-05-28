@@ -31,16 +31,25 @@ export class DayDetails extends Component {
         })
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this.shortcut_closeDayDetails, false);
+    }
+
+    shortcut_closeDayDetails = (event) => {
+        if(event.keyCode === 27)
+            this.closeDayDetails();
+    }
+
     componentWillReceiveProps(nextProps) {
         this.details.setDate(nextProps.day);
         this.setState({
             day: nextProps.day,
             details: this.details.getDayDetails(nextProps.day)
         })
-        setTimeout(() => {
+        /* setTimeout(() => {
             console.log('componentWillReceiveProps()');
             console.log(this.state.details);
-        }, 1000);
+        }, 1000); */
     }
 
     formatDate = (date) => {
@@ -124,7 +133,7 @@ export class DayDetails extends Component {
                         <hr />
                         <h1>Mi planificación</h1>
                         {this.state.details.length > 0 ? this.state.details.map(detail => (
-                            <div key={detail.project + '-' + detail.date} className="detail">
+                            <div key={detail.project + '-' + detail.date + '-' + detail.time + '-' + Math.floor(Math.random() * 1001)} className="detail">
                                 <h2 className="title">{detail.project} <span className="time">{detail.time}</span></h2>
                                 <p className="description">"{detail.description}"</p>
                             </div>
