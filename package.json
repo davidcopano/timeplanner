@@ -2,6 +2,7 @@
   "name": "timeplanner",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://54.38.240.69/timeplanner",
   "dependencies": {
     "react": "^16.3.2",
     "react-calendar": "^2.14.0",
